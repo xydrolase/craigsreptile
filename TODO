@@ -1,0 +1,10 @@
+TODO:
+    - For posts with approximate location, use independent model to store those
+      entities for better efficiency. (Since it's really trivia to visualize
+      the location for these posts)
+
+    - Better bounding box search logic. When a user slighly shift the viewpoint
+      of the map, update the minimal amount of posts of area that is not
+      intersected with previous viewing bounds, if any.
+
+    - Try to improve the performance for proximitity fetch? Cache layer?

@@ -1,0 +1,20 @@
+CraigsReptile
+==============
+
+**CraigsReptile** is a discontinued project I made a few years back for
+visualizing apartment listings on craigslist.
+
+It runs on Google App Engine, but more than likely it will broke if you deploy
+it now on GAE, considering the months elapsed since I last contributed to this
+project.
+
+Features
+--------
+* CragisReptile keeps track of the apartment listings on craigslist of the cities
+to which the users subscribed. Each apartment's location on map is estimated
+using Google's reverse geocoding API, and can appear as a color-coded icon on 
+the map, with the color reflecting the price range.
+* Users can use sliders to filter the apartments by listing dates and price.
+* Users can also set up alert zones on map with certain filtering criteria, so 
+that when a new apartment listing appears, the user is promptly notified by
+email.

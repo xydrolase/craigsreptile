@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  height: auto;
+}
+
+body {
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+    line-height: 1.5;
+}
+
+p {
+    line-height: 1.5;
+    margin: 5px 0 5px 0;
+}
+
+a, a:link, a:visited {
+  text-decoration: underline;
+  font-weight: 500;
+  color: #999;
+}
+
+.hidden {display: none;}
+
+#map_canvas {
+  height: auto;
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  top:0;
+}
+
+@media print {
+  #map_canvas {
+    height: 950px;
+  }
+}
+
+#tip {
+    margin:0 auto; padding:0; width: 50%; 
+    position: absolute; top: 25px; left: 25%;
+    background: #000;
+    filter: alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    z-index: 100;
+    text-align: center;
+}
+h1 { color: #fff; font-size: 18px; margin: 5px 0 5px 0; font-weight: 200; font-family: sans-serif; }
+
+#user_panel {
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    top: 25px;
+    left: 75px;
+    width: 325px;
+    color: #333;
+    font-size: 14px;
+    z-index: 100;
+}
+
+#tools {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 100;
+}
+
+#tools a{
+    display: block;
+    background: url(/static/icons/apartment.png) no-repeat;
+    width: 32px;
+    height: 37px;
+}
+
+.item {
+    border:0; color:#f6931f; font-weight:bold;
+}
+
+#price_slider, #date_slider {
+    margin: 0 0.5em 0 0.5em;
+}
+
+#filter_menu {
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: #ccc 1px dashed;

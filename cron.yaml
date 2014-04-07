@@ -1,0 +1,8 @@
+cron:
+- description: synchronize all new advertisements from subscribed craigslists
+  url: /tasks/sync/
+  schedule: every 30 minutes
+- description: clean up outdated posts
+  url: /tasks/cleanup/
+  schedule: every 6 hours
+

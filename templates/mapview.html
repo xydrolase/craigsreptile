@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+<title>Craigslist viewer - {{ city }} / {{ category }}</title> 
+<link href="/static/css/default.css" rel="stylesheet" type="text/css" /> 
+<link href="/static/css/ui_lightness.css" rel="stylesheet" type="text/css" /> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/js/map.js?ver=20110511"></script>
+</head> 
+<body> 
+  <div id="map_canvas"></div> 
+  <div id="title"></div>
+  <div id="tools"><a href="#"></a></div>
+  <div id="user_panel">
+  <div id="tabs">
+    <ul>
+        <li><a href="#list_tab">Lists</a></li>
+        <li><a href="#filter_tab">Filters</a></li>
+    </ul>
+    <div id="list_tab">
+    {% if user %}
+        {{ user.nickname }}, <a href="{{ user_logout_url }}">Log out</a>
+        <h4>Your subscribed craigslists</h4>
+        <div id="subscriptions">
+          <select name="sublist" id="sublist">
+      {% for sublist in lists %}
+          <option value="{{sublist.key.id}}">{{sublist.city}}/{{sublist.category}}</option>
+      {% endfor %}
+          </select>
+      {% if not lists %}
+          <div id="subscribe_form">
+      {% else %}
+          <a class="clickable" href="javascript:void(0);" id="show_subscribe">
+              + Subscribe
+          </a>
+          <div id="subscribe_form" class="hidden">
+      {% endif %}
+          City: <input size="10" type="textbox" id="list_city" /><br />
+          State: <input size="2" id="list_state" /><br />
+          Category: 
+          <select id="list_category">
+              <option value="apa">apts/housing</option>
+              <option value="roo">rooms/shared</option>
+              <option value="sub">sublets</option>
+          </select>
+          <input type="button" value="Subscribe" onclick="subscribe()" />
+          </div>
+        </div>
+        <h4>Options</h4>
+        <div id="control_panel">
+            <p>
+                <span class="tag">Max price:</span>
+                <input type="text" id="price_amount" class="item" />
+            </p>
+            <div id="price_slider"></div>
+            <p>
+                <span class="tag">Freshness:</span>
+                <input type="text" id="date_back_to" class="item" value="2 day(s)" />
+            </p>
+            <div id="date_slider"></div>
+        </div>
+    {% else %}
+        Craigslist reptile is a tool that visualize apartments/shared
+        rooms/houses on Google Maps. <a href="{{ user_login_url }}">Log in</a>
+        using your Google Account to subscribe to the list you live and find
+        housing easily.
+        <h4>Public lists</h4>
+        <select name="sublist" id="sublist">
+      {% for sublist in lists %}
+          <option value="{{sublist.key.id}}">{{sublist.city}}/{{sublist.category}}</option>
+      {% endfor %}
+        </select>
+        <input id="subscription" value="0" type="hidden" />
+    {% endif %}
+      </div>
+      <div id="filter_tab">
+          <p><span class="item" id="filter_assoc_list"></span></p>
+        <select id="filter_list">
+          <option value="0">--SELECT A FILTER--</option>
+        </select>
+        <a class="clickable" href="javascript:void(0);" id="add_filter">
+            + New Filter
+        </a>
+        <div id="filter_menu" class="hidden">
+            <p>Center: <input type="text" id="filter_center" />
+              <a class="clickable" href="javascript:void(0);" id="set_center">
+                  Set
+              </a>
+            </p>
+            <p>
+                <span class="tag">Radius:</span>
+                <input type="text" id="filter_radius" class="item" value="2.5 km" />
+                <div id="radius_slider"></div></p>
+            </p>
+            <p>
+                <span class="tag">Max price:</span>
+                <input type="text" id="filter_max_price" class="item" />
+                <div id="filter_price_slider"></div></p>
+            </p>
+            <p>
+                <a class="clickable" href="javascript:void(0);" id="save_filter">
+                    Save
+                </a>
+            </p>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div id="post_dialog"></div>
+</body> 
+</html>
+
